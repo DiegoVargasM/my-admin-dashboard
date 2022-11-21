@@ -36,18 +36,92 @@ body {
     grid-template-areas:
     "drawer nav nav nav"
     "drawer content content content";
-    grid-template-rows: 0.6fr 4fr;
+    grid-template-rows: 0.8fr 4fr;
     grid-template-columns: 5rem 1fr 1fr 1fr;
 }
 
 .drawer {
     grid-area: drawer;
+    background-color: var(--drawer-color);
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    transition: var(--transition-drawer);
+    overflow: hidden;
+}
+
+.drawer:hover {
+    width: var(--drawer-width);
+}
+
+/* We dont want to display the menu items name
+unless we hover over them */
+
+.menuItem > h1 {
+    display: none;
+    margin-left: 5%;
+}
+
+.drawer:hover > .menuItem > h1 {
+    display: inline;
+}
+/* End */
+
+/* We need to move the navbar and the main content when we
+hover over the drawer */
+
+.drawer:hover ~ .navbar,
+.drawer:hover ~ .content {
+    margin-left: calc(var(--drawer-width) - 5rem);
+}
+
+.menuItem {
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menuItem > * {
+    cursor: pointer;
+}
+
+.drawer > div:not(:first-child) > * {
+    padding: 1vw 0.1vw 0.1vw 0vw;
+    font-size: calc(20px + 0.2vw);
+    padding-left: 20px;
+}
+
+.drawer > *:not(:first-child) > img {
+    width: calc(20px + 0.5vw);
+    height: calc(20px + 0.5vw);
+}
+
+.drawer > div:nth-child(8) {
+    padding-top: 60px;
+}
+
+.dashboard {
+    font-size: clamp(12px, calc(22px + 0.9vw), 45px);
+}
+
+.dashboard img {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(40px + 0.7vw);
+    height: calc(40px + 0.7vw);
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .navbar {
     grid-area: nav;
+    transition: var(--transition-notDrawer);
 }
 
 .content {
     grid-area: content;
+    transition: var(--transition-notDrawer);
 }
