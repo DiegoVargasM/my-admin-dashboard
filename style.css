@@ -27,6 +27,7 @@
 img {
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
 
 body {
@@ -74,6 +75,7 @@ hover over the drawer */
 .drawer:hover ~ .content {
     margin-left: calc(var(--drawer-width) - 5rem);
 }
+/* End */
 
 .menuItem {
     color: var(--text-secondary);
@@ -115,13 +117,108 @@ hover over the drawer */
     padding-left: 10px;
     padding-top: 10px;
 }
-
+/* navbar styling */
 .navbar {
     grid-area: nav;
+    /* Set transition to match with drawer */
     transition: var(--transition-notDrawer);
+    background-color: var(--nav-bg-1);
+    padding: 1.5rem 3rem;
+    border-bottom: 2px solid rgb(219, 219, 219);
+}
+
+.topNav {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    margin-bottom: 2.5rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    width: 100%;
+}
+
+.search > input {
+    display: inline-block;
+    border: 0;
+    background-color: var(--nav-color-1);
+    padding: 0.5rem 1.2rem;
+    outline-color: var(--blue-1);
+    margin-left: 1.25rem;
+    border-radius: 5px;
+    width: min(80%, 600px);
+    margin-right: 20px;
+}
+
+.navbar .account {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.gh-avatar {
+    background: var(--gh-avatar) center center / cover no-repeat;
+    border-radius: 50%;
+}
+
+.account .gh-avatar {
+    margin: 0 1rem 0 2.5rem;
+    height: 40px;
+    width: 40px;
 }
 
 .content {
     grid-area: content;
+    /* Set transition to match with drawer */
     transition: var(--transition-notDrawer);
+}
+
+.bottom {
+   display: flex;
+   justify-content: space-between; 
+   align-items: center;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile .gh-avatar {
+    width: 100px;
+    height: 75px;
+}
+
+.greeting {
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+}
+
+.profile .name {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn {
+    background-color: var(--drawer-color);
+    color: var(--text-secondary);
+    font-weight: 650;
+    padding: 0.5rem 1.8rem;
+    border-radius: 7px;
+    font-size: 20px;
+    border: 1.5px solid gray;
+    cursor: pointer;
+    font-family: "Ubuntu Condensed", sans-serif;
 }
