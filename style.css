@@ -37,12 +37,11 @@ body {
     grid-template-areas:
     "drawer nav nav nav"
     "drawer content content content";
-    grid-template-rows: 0.8fr 4fr;
+    grid-template-rows: 0.6fr 4fr;
     grid-template-columns: 5rem 1fr 1fr 1fr;
 }
 
 .drawer {
-    grid-area: drawer;
     background-color: var(--drawer-color);
     width: 5rem;
     height: 100vh;
@@ -60,11 +59,11 @@ unless we hover over them */
 
 .menuItem > h1 {
     display: none;
-    margin-left: 5%;
+    margin-left: 2rem;
 }
 
 .drawer:hover > .menuItem > h1 {
-    display: inline;
+    display: flex;
 }
 /* End */
 
@@ -89,9 +88,13 @@ hover over the drawer */
     cursor: pointer;
 }
 
+a {
+    text-decoration: none;
+}
+
 .drawer > div:not(:first-child) > * {
-    padding: 1vw 0.1vw 0.1vw 0vw;
-    font-size: calc(20px + 0.2vw);
+    padding: 1rem 0.5rem 0.5rem 1rem;
+    font-size: 22px;
     padding-left: 20px;
 }
 
@@ -125,6 +128,7 @@ hover over the drawer */
     background-color: var(--nav-bg-1);
     padding: 1.5rem 3rem;
     border-bottom: 2px solid rgb(219, 219, 219);
+    top: 0;
 }
 
 .topNav {
@@ -144,7 +148,7 @@ hover over the drawer */
     display: inline-block;
     border: 0;
     background-color: var(--nav-color-1);
-    padding: 0.5rem 1.2rem;
+    padding: 0.5rem 1.5rem;
     outline-color: var(--blue-1);
     margin-left: 1.25rem;
     border-radius: 5px;
@@ -169,12 +173,6 @@ hover over the drawer */
     margin: 0 1rem 0 2.5rem;
     height: 40px;
     width: 40px;
-}
-
-.content {
-    grid-area: content;
-    /* Set transition to match with drawer */
-    transition: var(--transition-notDrawer);
 }
 
 .bottom {
@@ -218,7 +216,176 @@ hover over the drawer */
     padding: 0.5rem 1.8rem;
     border-radius: 7px;
     font-size: 20px;
-    border: 1.5px solid gray;
+    border: 1.2px solid gray;
     cursor: pointer;
     font-family: "Ubuntu Condensed", sans-serif;
+}
+
+/* Main content */
+
+.content {
+    grid-area: content;
+    /* Set transition to match with drawer */
+    transition: var(--transition-notDrawer);
+    /* end */
+    background-color: var(--content-gray);
+    display: grid;
+    padding: 2rem;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: min-content 1fr;
+    gap: 2rem;
+    grid-template-areas:
+        "projects announcements"
+        "projects trending";
+    overflow: auto;
+    height: 100%;
+}
+
+.content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.card {
+    background-color: rgba(45, 187, 187, 0.459);
+    padding: 2rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 /0.1);
+    max-width: 30vw;
+}
+
+.projects {
+    grid-area: projects;
+}
+
+.projects .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.projects .card {
+    background-color: var(--nav-color-2);
+    border-left: 10px solid rgb(255, 198, 91);
+    display: flex;
+    flex-direction: column;
+}
+
+.projects .card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.projects .card-text {
+    display: flex;
+    overflow: hidden;
+}
+
+.projects .icons {
+    margin-top: auto;
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.4rem;
+    align-items: center;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.announcements {
+    grid-area: announcements;
+}
+
+.announcement {
+    width: 25ch;
+    padding: 1rem 0;
+}
+
+.announcement:first-child {
+    padding-top: 0;
+}
+
+.announcement:last-child {
+    padding-bottom: 0;
+}
+
+.announcement h5 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.announcement p {
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.announcement+.announcement {
+    border-top: rgb(115, 115, 115) 1px solid;
+}
+
+.trending {
+    grid-area: trending;
+}
+
+.trending .card {
+    padding: 1.5rem;
+}
+
+.trend {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.trend +.trend {
+    margin-top: 1.5rem;
+}
+
+.trend .account {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.trend .username {
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.trend-1 .gh-avatar2 {
+    background: var(--gh-avatar2) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-2 .gh-avatar {
+    background: var(--gh-avatar) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-3 .gh-avatar3 {
+    background: var(--gh-avatar3) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.trend-4 .gh-avatar4 {
+    background: var(--gh-avatar4) center center / cover no-repeat;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
