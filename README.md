@@ -1,3 +1,13 @@
-This project consists of:
+Note: SVG files not rendering on github.io page, pending fix.\*
 
-1. The main admin dashboard display was made made with html and css, using custom css properties, selector combinations, grid, flexbox, and transitions.
+Intermediate HTML and CSS:
+-HTML 5 Tags
+-CSS Custom Properties
+-CSS Transitions
+-CSS Grid
+-CSS Flexbox
+-Dynamic display using CSS
+-CSS Selector combinations
+-Property functions
+-Abosulte and relative units
+-External fonts
